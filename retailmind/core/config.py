@@ -22,6 +22,10 @@ def _get_secret(key: str, default: str = "") -> str:
         return default
 
 
+_core_dir = os.path.dirname(os.path.abspath(__file__))
+_base_dir = os.path.dirname(_core_dir)
+
+
 class Config:
     DEEPSEEK_API_KEY = _get_secret("DEEPSEEK_API_KEY")
     DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
@@ -31,14 +35,14 @@ class Config:
     
     EMBEDDING_MODEL = "BAAI/bge-large-zh-v1.5"
     
-    VECTOR_DB_DIR = "./vector_db"
+    VECTOR_DB_DIR = os.path.join(_base_dir, "vector_db")
     
     TEMPERATURE_QA = 0.3
     TEMPERATURE_AGENT = 0.1
     TEMPERATURE_REPORT = 0.5
     MAX_TOKENS = 4096
     
-    DATA_DIR = "./data"
-    RAW_DATA_DIR = "./data/raw"
-    PROCESSED_DATA_DIR = "./data/processed"
-    KNOWLEDGE_DIR = "./data/knowledge"
+    DATA_DIR = os.path.join(_base_dir, "data")
+    RAW_DATA_DIR = os.path.join(_base_dir, "data", "raw")
+    PROCESSED_DATA_DIR = os.path.join(_base_dir, "data", "processed")
+    KNOWLEDGE_DIR = os.path.join(_base_dir, "data", "knowledge")

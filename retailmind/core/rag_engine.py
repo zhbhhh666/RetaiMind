@@ -1,5 +1,28 @@
 import os
-os.environ.setdefault("HF_ENDPOINT", "https://hf-mirror.com")
+
+def _setup_hf_endpoint():
+    """智能设置 HuggingFace 镜像源。
+    
+    检测当前环境是否能访问国内镜像，海外环境使用官方源。
+    """
+    if os.getenv("HF_ENDPOINT"):
+        return
+    
+    try:
+        import socket
+        timeout = 3
+        for host in ["hf-mirror.com", "huggingface.co"]:
+            try:
+                socket.create_connection((host, 443), timeout=timeout)
+                os.environ["HF_ENDPOINT"] = f"https://{host}"
+                return
+            except:
+                continue
+        os.environ["HF_ENDPOINT"] = "https://huggingface.co"
+    except:
+        os.environ["HF_ENDPOINT"] = "https://huggingface.co"
+
+_setup_hf_endpoint()
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS", "1")
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
