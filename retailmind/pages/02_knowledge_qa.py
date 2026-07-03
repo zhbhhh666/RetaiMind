@@ -9,6 +9,14 @@ st.set_page_config(page_title="知识库问答", page_icon="📚", layout="wide"
 st.title("📚 供应链知识库问答")
 st.subheader("基于 RAG 的智能文档问答系统")
 
+with st.expander("🔧 环境信息（排查用）", expanded=False):
+    st.write(f"**HF_ENDPOINT**: `{os.getenv('HF_ENDPOINT', '未设置')}`")
+    st.write(f"**知识库目录**: `{Config.KNOWLEDGE_DIR}`")
+    st.write(f"**知识库目录存在**: `{os.path.exists(Config.KNOWLEDGE_DIR)}`")
+    st.write(f"**向量库目录**: `{Config.VECTOR_DB_DIR}`")
+    st.write(f"**Embedding 模型**: `{Config.EMBEDDING_MODEL}`")
+    st.write(f"**工作目录**: `{os.getcwd()}`")
+
 api_key = Config.DEEPSEEK_API_KEY
 
 if not api_key:

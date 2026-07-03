@@ -1,26 +1,30 @@
 import os
 
+DEFAULT_HF_ENDPOINT = "https://huggingface.co"
+
 def _setup_hf_endpoint():
-    """智能设置 HuggingFace 镜像源。
-    
-    检测当前环境是否能访问国内镜像，海外环境使用官方源。
+    """设置 HuggingFace 下载源。
+
+    优先级：环境变量 HF_ENDPOINT > 自动检测 > 默认官方源
+    国内环境可在 .env 中设置 HF_ENDPOINT=https://hf-mirror.com
+    海外环境（如 Streamlit Cloud）自动使用官方源
     """
     if os.getenv("HF_ENDPOINT"):
         return
-    
+
     try:
         import socket
-        timeout = 3
-        for host in ["hf-mirror.com", "huggingface.co"]:
-            try:
-                socket.create_connection((host, 443), timeout=timeout)
-                os.environ["HF_ENDPOINT"] = f"https://{host}"
-                return
-            except:
-                continue
-        os.environ["HF_ENDPOINT"] = "https://huggingface.co"
-    except:
-        os.environ["HF_ENDPOINT"] = "https://huggingface.co"
+        timeout = 2
+        try:
+            socket.create_connection(("hf-mirror.com", 443), timeout=timeout)
+            os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
+            return
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+    os.environ["HF_ENDPOINT"] = DEFAULT_HF_ENDPOINT
 
 _setup_hf_endpoint()
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS", "1")

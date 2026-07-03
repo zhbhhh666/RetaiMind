@@ -33,7 +33,7 @@ class Config:
     CHAT_MODEL = "deepseek-chat"
     REASONER_MODEL = "deepseek-reasoner"
     
-    EMBEDDING_MODEL = "BAAI/bge-large-zh-v1.5"
+    EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-zh-v1.5")
     
     VECTOR_DB_DIR = os.path.join(_base_dir, "vector_db")
     
