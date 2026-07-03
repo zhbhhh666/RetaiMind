@@ -1,0 +1,104 @@
+{
+  "dataset_name": "库存Agent评估集",
+  "version": "1.0",
+  "description": "针对库存预警Agent的任务评估数据集",
+  "total_tasks": 12,
+  "tasks": [
+    {
+      "id": "agent_001",
+      "query": "SKU000001 的库存是多少？",
+      "expected_tools": ["inventory_query"],
+      "expected_sku": "SKU000001",
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_002",
+      "query": "帮我查一下哪些商品库存不足",
+      "expected_tools": ["list_low_stock_items"],
+      "expected_sku": null,
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_003",
+      "query": "给我库存汇总数据",
+      "expected_tools": ["get_stock_summary"],
+      "expected_sku": null,
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_004",
+      "query": "按品类分析一下库存情况",
+      "expected_tools": ["get_category_analysis"],
+      "expected_sku": null,
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_005",
+      "query": "有哪些商品需要补货？建议补多少？",
+      "expected_tools": ["get_restock_recommendation"],
+      "expected_sku": null,
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_006",
+      "query": "SKU000002 未来一周销量预测怎么样？",
+      "expected_tools": ["sales_forecast"],
+      "expected_sku": "SKU000002",
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_007",
+      "query": "列出所有的SKU编号",
+      "expected_tools": ["list_all_skus"],
+      "expected_sku": null,
+      "task_type": "单工具调用",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_008",
+      "query": "SKU000003 当前库存和预测销量分别是多少？",
+      "expected_tools": ["inventory_query", "sales_forecast"],
+      "expected_sku": "SKU000003",
+      "task_type": "多工具调用",
+      "difficulty": "中等"
+    },
+    {
+      "id": "agent_009",
+      "query": "现在有多少商品库存不足？帮我算一下总共需要补多少货",
+      "expected_tools": ["list_low_stock_items", "get_restock_recommendation"],
+      "expected_sku": null,
+      "task_type": "多工具调用",
+      "difficulty": "中等"
+    },
+    {
+      "id": "agent_010",
+      "query": "帮我整体分析一下库存状况，包括汇总数据和品类分布",
+      "expected_tools": ["get_stock_summary", "get_category_analysis"],
+      "expected_sku": null,
+      "task_type": "多工具调用",
+      "difficulty": "中等"
+    },
+    {
+      "id": "agent_011",
+      "query": "今天天气不错",
+      "expected_tools": [],
+      "expected_sku": null,
+      "task_type": "无需工具",
+      "difficulty": "简单"
+    },
+    {
+      "id": "agent_012",
+      "query": "低库存的商品里，SKU000004 需要补多少货？",
+      "expected_tools": ["list_low_stock_items", "get_restock_recommendation"],
+      "expected_sku": "SKU000004",
+      "task_type": "多工具调用",
+      "difficulty": "中等"
+    }
+  ]
+}

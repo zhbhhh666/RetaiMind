@@ -1,0 +1,136 @@
+{
+  "dataset_name": "供应链知识库RAG评估集",
+  "version": "1.0",
+  "description": "基于4篇供应链知识库文档构建的问答评估数据集",
+  "total_questions": 16,
+  "questions": [
+    {
+      "id": "rag_001",
+      "question": "缺货商品的处理流程是什么？",
+      "ground_truth": "缺货处理分为四步：1.确认缺货（系统自动预警+人工2小时内确认）；2.补货申请（系统生成补货单+主管审批，超5万需财务审批）；3.供应商通知（优先主供应商，备选备选）；4.到货跟进（每日更新进度，逾期升级处理）",
+      "relevant_docs": ["supply_chain_policy.txt"],
+      "category": "流程类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_002",
+      "question": "安全库存线一般设定为多少天的销售量？",
+      "ground_truth": "安全库存线一般为7-14天的销售量，由品类经理根据历史销售数据设定",
+      "relevant_docs": ["supply_chain_policy.txt"],
+      "category": "参数类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_003",
+      "question": "供应商分为哪几类？考核指标有哪些？",
+      "ground_truth": "供应商分为A类（核心，占采购额60%以上）、B类（重要，占30%左右）、C类（补充，占10%以下）。考核指标包括：交货准时率（目标95%以上）、产品合格率（目标99%以上）、服务响应时间（24小时内）",
+      "relevant_docs": ["supply_chain_policy.txt"],
+      "category": "管理类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_004",
+      "question": "库存盘点有哪些周期？盘点差异如何处理？",
+      "ground_truth": "盘点周期包括月度盘点（每月最后一个工作日）、季度大盘点（每季度结束后5个工作日内）、年度盘点（每年12月25日-31日）。差异处理：0.5%以内正常，0.5%-1%需查明原因记录，超过1%需上报管理层并调查",
+      "relevant_docs": ["supply_chain_policy.txt"],
+      "category": "流程类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_005",
+      "question": "库存预警有哪些级别？分别如何处理？",
+      "ground_truth": "预警分为三级：红色预警（库存低于安全库存线50%，需立即处理）、黄色预警（低于安全线但高于50%，24小时内处理）、绿色预警（库存正常）",
+      "relevant_docs": ["inventory_management.txt"],
+      "category": "参数类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_006",
+      "question": "补货策略有哪几种？分别适用于什么场景？",
+      "ground_truth": "三种补货策略：1.定量补货（固定补货量，适用于销售稳定商品）；2.定期补货（固定周期，适用于季节性商品）；3.动态补货（根据预测调整，适用于新品、促销商品）",
+      "relevant_docs": ["inventory_management.txt"],
+      "category": "策略类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_007",
+      "question": "什么是滞销商品？如何处理滞销商品？",
+      "ground_truth": "滞销定义：连续30天无销售记录或库存周转天数超过60天。处理措施：促销活动（打折、买赠、捆绑）、调拨（转至销售好的门店）、退货（退回供应商）、清仓（低价处理）",
+      "relevant_docs": ["inventory_management.txt"],
+      "category": "管理类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_008",
+      "question": "订单确认时间是多久？",
+      "ground_truth": "标准订单5分钟内确认，大额订单需人工审核，30分钟内确认",
+      "relevant_docs": ["order_processing.txt"],
+      "category": "参数类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_009",
+      "question": "拣货方式有哪几种？分别适合什么场景？",
+      "ground_truth": "三种拣货方式：单品拣货（适合订单量小的场景）、批量拣货（适合订单量大的场景）、波次拣货（按时间窗口分批处理）",
+      "relevant_docs": ["order_processing.txt"],
+      "category": "流程类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_010",
+      "question": "退货的条件是什么？退货流程是怎样的？",
+      "ground_truth": "退货条件：商品完好无损、购买7天内、保留原始包装。退货流程：客户线上申请→1个工作日内审核通过→仓库收到退货后24小时内验收→验收通过后3个工作日内退款",
+      "relevant_docs": ["order_processing.txt"],
+      "category": "流程类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_011",
+      "question": "会员分为几个等级？各等级的消费门槛是多少？",
+      "ground_truth": "四个等级：普通会员（注册即得）、银卡会员（累计消费满1000元）、金卡会员（累计满5000元）、钻石会员（累计满20000元）",
+      "relevant_docs": ["member_service.txt"],
+      "category": "参数类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_012",
+      "question": "金卡会员有哪些权益？",
+      "ground_truth": "金卡会员权益：9折优惠、优先发货、新品试用",
+      "relevant_docs": ["member_service.txt"],
+      "category": "权益类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_013",
+      "question": "积分如何获取和使用？",
+      "ground_truth": "积分获取：消费1元得1积分、每日签到得5积分、参与活动得额外积分。积分使用：100积分抵1元、可兑换礼品、可兑换免运费等服务",
+      "relevant_docs": ["member_service.txt"],
+      "category": "规则类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_014",
+      "question": "红色预警和黄色预警的区别是什么？",
+      "ground_truth": "红色预警是库存低于安全库存线的50%，需立即处理，并有短信即时提醒；黄色预警是库存低于安全库存线但高于50%，需24小时内处理",
+      "relevant_docs": ["inventory_management.txt"],
+      "category": "对比类",
+      "difficulty": "中等"
+    },
+    {
+      "id": "rag_015",
+      "question": "配送方式有哪几种？时效分别是多久？",
+      "ground_truth": "三种配送方式：自营配送（同城订单，当日达）、第三方配送（跨城订单，1-3天）、自提（门店自提，即时可取）",
+      "relevant_docs": ["order_processing.txt"],
+      "category": "参数类",
+      "difficulty": "简单"
+    },
+    {
+      "id": "rag_016",
+      "question": "补货申请的审批流程是怎样的？",
+      "ground_truth": "系统自动生成补货申请单，需经仓库主管审批；如果补货金额超过5万元，还需要财务审批",
+      "relevant_docs": ["supply_chain_policy.txt"],
+      "category": "流程类",
+      "difficulty": "简单"
+    }
+  ]
+}

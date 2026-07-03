@@ -1,0 +1,4 @@
+[server]
+# 禁用文件监视器，避免 Streamlit 模块监控器检查 torch._classes 时报错
+# 修改代码后需手动刷新浏览器或重启应用
+fileWatcherType = "none"
